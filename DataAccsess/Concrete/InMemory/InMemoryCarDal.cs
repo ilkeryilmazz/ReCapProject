@@ -51,8 +51,12 @@ namespace DataAccsess.Concrete.InMemory
         public void Update(Car car)
         {
             Car carToUpdate = _cars.SingleOrDefault(c => c.Id == car.Id);
-            carToUpdate.DailyPrice = 150;
-            carToUpdate.Description = "Güncellenen araba";  
+            carToUpdate.Id = car.Id;
+            carToUpdate.BrandId = car.BrandId;
+            carToUpdate.ColorId = car.ColorId;
+            carToUpdate.ModelYear = car.ModelYear;
+            carToUpdate.DailyPrice = car.DailyPrice;
+            carToUpdate.Description = car.Description;
         }
     }
 }
