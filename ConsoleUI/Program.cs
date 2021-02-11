@@ -10,8 +10,22 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            GetCarDetails();
+            //GetCarDetails();
             //AddCar();
+            //AddCustomer();
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var result = rentalManager.Add(new Rental { CarId = 2, CustomerId = 2, RentDate = new DateTime(2021, 2, 11), ReturnDate = new DateTime(2021, 2, 12) });
+            Console.WriteLine(result.Message);
+
+           // Console.WriteLine(rentalManager.GetById(3).Data.ReturnDate);
+            
+        }
+
+        private static void AddCustomer()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            var result = customerManager.Add(new Customer { UserId = 2, CompanyName = "Yok" });
+            Console.WriteLine(result.Message);
         }
 
         private static void AddCar()
@@ -41,13 +55,6 @@ namespace ConsoleUI
                 }
                 Console.WriteLine(result.Message);
             }
-            
-            
-                
-            
-            
-            
-            
         }
     }
 }
